@@ -123,27 +123,3 @@ def zajemi_vse_strani_kategorije(kategorija, max_strani=None):
     print(f"Za kategorijo '{kategorija}' uspešno zajeto {len(uspesne_strani)} strani")
     return uspesne_strani
 
-# Test
-if __name__ == "__main__":
-    # Testiraj z eno kategorijo
-    print("Testiram zajem ene kategorije...")
-    zajemi_kategorijo('trzna_kap')
-    
-    # Testiraj z vsemi kategorijami (pozor: traja nekaj časa!)
-    # print("Testiram zajem vseh kategorij...")
-    # zajemi_vse_kategorije()
-
-    # Testiraj prvih 5 strani za vse kategorije
-    print("\nTestiram zajem prvih 5 strani za vse kategorije...")
-    for kategorija in podjetja_urls:
-        print(f"\n--- Zajemam kategorijo: {kategorija} ---")
-        zajemi_vse_strani_kategorije(kategorija, max_strani=5)
-    
-    print("\n=== ZAJEM KONČAN ===")
-    print("Zajeto je bilo 5 strani × 6 kategorij = 30 strani")
-    print("To predstavlja približno 500 podjetij × 6 kategorij = 3000 podatkov")
-    
-    # Testiraj z vsemi kategorijami in vsemi stranmi (POZOR: TRAJA DOLGO!)
-    # print("Testiram zajem vseh strani za vse kategorije...")
-    # for kategorija in podjetja_urls:
-    #     zajemi_vse_strani_kategorije(kategorija)  # Brez max_strani = vse strani
