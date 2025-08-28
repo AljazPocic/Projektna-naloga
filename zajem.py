@@ -51,6 +51,7 @@ def shrani_spletno_stran(url, directory, filename):
         print(f"Napaka: Ni bilo mogoče prenesti strani {url}")
         return False
 
+
 def zajemi_kategorijo(kategorija):
     """Funkcija zajeme podatke za določeno kategorijo in shrani HTML"""
     if kategorija not in podjetja_urls:
