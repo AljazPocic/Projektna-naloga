@@ -81,7 +81,7 @@ def zajemi_vse_kategorije():
     print(f"Uspešno zajete kategorije: {uspesne_kategorije}")
     return uspesne_kategorije
 
-def zajemi_vse_strani_kategorije(kategorija, max_strani=None):
+def zajemi_vse_strani_kategorije(kategorija, max_strani=100):  # s tem dobimo podatke o 10000 podjetji
     """Ker so podatki za določeno kategorijo navedeni na večih zaporednih stranaj,
     nam funkcija zajeme vse strani za določeno kategorijo"""
     if kategorija not in podjetja_urls:
