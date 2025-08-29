@@ -1,6 +1,7 @@
 import csv
 import os
 import obdelava
+import pandas as pd
 
 def zapisi_csv(fieldnames, rows, directory, filename):
     """Funkcija v CSV datoteko podano s parametroma "directory"/"filename" zapiše
@@ -38,3 +39,21 @@ def shrani_vse_kategorije(directory):
     for kategorija in kategorije:
         shrani_kategorijo_csv(kategorija, directory)
     print("Vse kategorije so bile shranjene v CSV datoteke")
+
+def zdruzi_vse_kategorije(directory, izhodni_filename='vse_kategorije.csv'):
+    """Funkcija združi vse kategorije v eno CSV datoteko po id, name, country.
+    Če kateremu podjetju manjka podatek neke kategorija se mu tam zapiše NaN"""
+    # imena vseh CSV datotek
+    kategorije = ['trzna_kap', 'prihodek', 'dobicek', 'st_zaposlenih', 'dividende', 'kazalnik_p_e']
+    dfs = []    #dsf kot DataFrames
+    for kategorija in kategorije:
+        path = os.path.join(directory, f"{kategorija}.csv")
+        dfs.append(pd.read_csv(path))
+    # združimo po id, name, country
+    vsi_df = dfs[0]
+    for df in dfs[1:]:
+        vsi_df = vsi_df.merge(df, on=['id', 'name', 'country'], how='outer') # how='outer' ohrani vsa podjetja iz vseh kategorij
+
+    izhod_path = os.path.join(directory, izhodni_filename)
+    vsi_df.to_csv(izhod_path, index=False)
+
