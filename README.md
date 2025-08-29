@@ -15,7 +15,7 @@ Za lažje razumevanje bodo finančni podatki izraženi v evrih. Privzeta valuat 
 
 ## Navodila za uporabo
 
-Uporabnik programa mora odpret dokument `analiza_podjetji.ipynb`. Tam so v Jupyter Notebook-u analizirani podatki.
+Uporabnik programa mora odpreti dokument `analiza_podjetji.ipynb`. Tam so v Jupyter Notebook-u analizirani podatki.
 
 Po želji lahko uporabnik požene main.py, ki zajame podatke, jih obdela in shrani v CSV datoteke.
 
