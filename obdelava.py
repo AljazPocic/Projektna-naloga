@@ -18,6 +18,12 @@ def razdeli_na_podjetja(html_vsebina):
 def poberi_podatke_podjetja(blok, kategorija):
     """Funkcija izlušči podatke iz bloka enega podjetja:
       name, vrednost (različno glede na kategorijo), country."""
+    
+    # ID (vsako podjetje ima na spletni strani svojo ID številko)
+    id_vzorec = r'data-id="([0-9]+)"'
+    id_najdi = re.search(id_vzorec, blok)
+    id = id_najdi.group(1).strip() if id_najdi else "Ni podatka"
+
     # NAME (ime podjetja)  
     name_vzorec = r'<div class="company-name">(.*?)</div>'
     name_najdi = re.search(name_vzorec, blok)
@@ -64,6 +70,7 @@ def poberi_podatke_podjetja(blok, kategorija):
     
     # slovar podatkov
     podatki = {
+        "id": id,
         "name": name,
         "country": country
     }
